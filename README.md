@@ -27,9 +27,6 @@ statically linked BusyBox, DHCP networking support and BIOS/UEFI boot.
     --------> run_in_term.sh        ( Run MSMD Linux in QEMU via ncurses )
     --------> burn.sh               ( Burn ISO to USB flash (/dev/sda)   )
 
-# Remastering ISO
-Use **remaster_iso.sh** script to add/remove packages to the RootFS.
-
 # Download ISO
 <a href="https://github.com/maksimKorzh/msmd-linux/releases/download/1/msmd-linux-core.iso">**MSMD Linux CORE:**</a>
 <br>
@@ -46,6 +43,12 @@ Use **remaster_iso.sh** script to add/remove packages to the RootFS.
  - rtw88 WiFi firmware
  - wpa supplicant
  - wifi.sh
+
+# Remastering ISO
+Use **remaster_iso.sh** script to add/remove packages to the RootFS.
+By default **msmd-linux-core.iso** is used as a starter but you can use any.
+You can also modify files under **/ini** folder as they would be included.
+GRUB config may be altered at /cfg/grub.cfg
 
 # WARNING
 Make sure to replace **/dev/sda** in **burn.sh** with your own USB device!<br>
