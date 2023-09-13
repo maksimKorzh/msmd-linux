@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Suppress kernel messages
+dmesg -n 1
+clear
+
+# Mount file systems
+mount -t devtmpfs none /dev
+mount -t proc none /proc
+mount -t sysfs none /sys
+
+# Setup networking
+for NETDEV in /sys/class/net/* ; do
+  echo "Found network device ${NETDEV##*/}"
+  ip link set ${NETDEV##*/} up
+  [ ${NETDEV##*/} != lo ] && udhcpc -b -i ${NETDEV##*/} -s /etc/network.sh
+done
+
+# Start buxybox init as PID 1
+exec /sbin/init
