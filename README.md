@@ -30,17 +30,19 @@ statically linked BusyBox, DHCP networking support and BIOS/UEFI boot.
 # Remastering ISO
 Use **remaster_iso.sh** script to add/remove packages to the RootFS.
 
-# What is inside?
-MSMD Linux CORE<br>
+# Download ISO
+<a href="https://github.com/maksimKorzh/msmd-linux/releases/download/1/msmd-linux-core.iso">**MSMD Linux CORE:**</a>
+<br>
  - Kernel 5.10.76
  - BusyBox 1.36.1
 <br>
 
-MSMD Linux NETWORKING<br>
+<a href="https://github.com/maksimKorzh/msmd-linux/releases/download/1/msmd-linux-networking.iso">**MSMD Linux NETWORKING:**</a>
+<br>
  - Kernel 5.10.76
  - BusyBox 1.36.1
- - <a href="https://github.com/maksimKorzh/get">get 0.1</a>
- - <a href="https://github.com/maksimKorzh/get">vici 0.3</a>
+ - <a href="https://github.com/maksimKorzh/get">get</a>
+ - <a href="https://github.com/maksimKorzh/vici">vici</a>
  - rtw88 WiFi firmware
  - wpa supplicant
  - wifi.sh
@@ -49,9 +51,6 @@ MSMD Linux NETWORKING<br>
 Make sure to replace **/dev/sda** in **burn.sh** with your own USB device!<br>
 OTHERWISE YOU CAN CAUSE IRREVERSIBLE DAMAGE TO YOUR FILES!<br>
 Use **sudo fdisk -l** to find your USB flash drive path
-
-# Latest release
-https://github.com/maksimKorzh/msmd-linux/releases
 
 # YouTube Tutorials
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DAXVgdpe7HE/0.jpg)](https://www.youtube.com/watch?v=DAXVgdpe7HE&list=PLLfIBXQeu3aZuc_0xTE2dY3juntHF5xJY&index=2)
