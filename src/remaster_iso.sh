@@ -60,7 +60,7 @@ cd root
 gunzip -c ../../iso/boot/root.cpio.gz | fakeroot -s ../root.fakeroot cpio -i
 
 # Create new directories if needed
-mkdir home
+mkdir home tmp mnt
 mkdir -p lib/firmware/rtw88
 
 # Install packages ~/msmd-linux/src/packages/root
