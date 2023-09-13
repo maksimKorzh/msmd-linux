@@ -48,7 +48,7 @@ statically linked BusyBox, DHCP networking support and BIOS/UEFI boot.
 Use **remaster_iso.sh** script to add/remove packages to the RootFS.
 By default **msmd-linux-core.iso** is used as a starter but you can use any.
 You can also modify files under **/ini** folder as they would be included.
-GRUB config may be altered at /cfg/grub.cfg
+GRUB config may be altered at **/cfg/grub.cfg**
 
 # WARNING
 Make sure to replace **/dev/sda** in **burn.sh** with your own USB device!<br>
