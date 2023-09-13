@@ -26,14 +26,14 @@ set -e
 if [ -d iso/boot ]; then
   sudo umount iso
 fi
-rm -rf ../dts/iso
+rm -rf ../dst/iso
 rm -rf iso
 mkdir iso
 mkdir -p ../dst/iso/boot/grub
 
 # Download & mount ISO
 if [ ! -f msmd-linux.iso ]; then
-  wget "https://github.com/maksimKorzh/msmd-linux/releases/download/0.1/msmd-linux.iso"
+  wget "https://github.com/maksimKorzh/msmd-linux/releases/download/1/msmd-linux-core.iso"
 fi
 sudo mount msmd-linux.iso iso -t iso9660 -o loop
 
@@ -47,6 +47,11 @@ cd packages
 # It's handy to download packages here
 # but it's not obvious for you can copy
 # files from any location
+git clone https://github.com/maksimKorzh/get
+git clone https://github.com/maksimKorzh/vici
+mkdir wpa_supplicant && cd wpa_supplicant
+curl http://s.minos.io/archive/rlsd2/x86_64/wpa_supplicant.tar.gz > wpa_supplicant.tar.gz
+tar -xvf wpa_supplicant.tar.gz && cd ..
 
 # Unpack rootfs
 rm -rf root
@@ -54,11 +59,19 @@ mkdir root
 cd root
 gunzip -c ../../iso/boot/root.cpio.gz | fakeroot -s ../root.fakeroot cpio -i
 
+# Create new directories if needed
+mkdir home
+mkdir -p lib/firmware/rtw88
+
 # Install packages ~/msmd-linux/src/packages/root
 #
 # You're now in root, copy any files
 # to ./usr/bin or wherever within the
 # root to include them into root.cpio.gz
+cp ../get/src/get ./usr/bin/get                                 # install statically linked alternative to 'wget'
+cp ../vici/src/vici ./usr/bin/vici                              # install text editor
+cp ../wpa_supplicant/bin/* ./usr/bin/                           # install wpa supplicant
+cp ../../../fmw/rtw88/rtw8821c_fw.bin ./lib/firmware/rtw88      # install WiFi firmware for my laptop ;)
 
 # Update init files
 cp ../../../ini/init .
@@ -66,6 +79,7 @@ cp ../../../ini/inittab ./etc/inittab
 cp ../../../ini/logo.txt ./etc/logo.txt
 cp ../../../ini/network.sh ./etc/network.sh
 cp ../../../ini/shell.sh ./etc/shell.sh
+cp ../../../ini/wifi.sh ./usr/bin/wifi.sh
 
 # Pack rootfs
 find . | fakeroot -i ../root.fakeroot cpio -o -H newc | gzip > ../../../dst/iso/boot/root.cpio.gz
