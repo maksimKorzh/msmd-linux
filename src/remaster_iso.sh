@@ -32,10 +32,11 @@ mkdir iso
 mkdir -p ../dst/iso/boot/grub
 
 # Download & mount ISO
-if [ ! -f msmd-linux.iso ]; then
-  wget "https://github.com/maksimKorzh/msmd-linux/releases/download/1/msmd-linux-core.iso"
+ISO="msmd-linux-core.iso"
+if [ ! -f $ISO ]; then
+  wget https://github.com/maksimKorzh/msmd-linux/releases/download/1/$ISO
 fi
-sudo mount msmd-linux.iso iso -t iso9660 -o loop
+sudo mount $ISO iso -t iso9660 -o loop
 
 # Prepare working directory
 rm -rf packages
