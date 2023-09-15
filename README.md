@@ -28,21 +28,16 @@ statically linked BusyBox, DHCP networking support and BIOS/UEFI boot.
     --------> burn.sh               ( Burn ISO to USB flash (/dev/sda)   )
 
 # Download ISO
-<a href="https://github.com/maksimKorzh/msmd-linux/releases/download/1/msmd-linux-core.iso">**MSMD Linux CORE:**</a>
+<a href="https://github.com/maksimKorzh/msmd-linux/releases/download/1/msmd-linux-core-static.iso">**MSMD Linux CORE (static):**</a>
 <br>
  - Kernel 5.10.76
  - BusyBox 1.36.1
 <br>
 
-<a href="https://github.com/maksimKorzh/msmd-linux/releases/download/1/msmd-linux-networking.iso">**MSMD Linux NETWORKING:**</a>
+<a href="https://github.com/maksimKorzh/msmd-linux/releases/download/1/msmd-linux-core-glibc.iso">**MSMD Linux CORE (glibc):**</a>
 <br>
  - Kernel 5.10.76
  - BusyBox 1.36.1
- - <a href="https://github.com/maksimKorzh/get">get</a>
- - <a href="https://github.com/maksimKorzh/vici">vici</a>
- - rtw88 WiFi firmware
- - wpa supplicant
- - wifi.sh
 
 # Remastering ISO
 Use **remaster_iso.sh** script to add/remove packages to the RootFS.
