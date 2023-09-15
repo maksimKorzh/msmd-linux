@@ -21,7 +21,7 @@ statically linked BusyBox, DHCP networking support and BIOS/UEFI boot.
     --------> logo.txt              ( Cute "Monkey See, Monkey Do" logo  )
 
     ----> src                       (         Distro build script        )
-    --------> build_core.sh         ( Build MSMD Linux from scratch      )
+    --------> build_static_core.sh  ( Static MSMD Linux from scratch     )
     --------> remaster_iso.sh       ( Add custom packages to ISO image   )
     --------> run.sh                ( Run MSMD Linux in QEMU             )
     --------> run_in_term.sh        ( Run MSMD Linux in QEMU via ncurses )
