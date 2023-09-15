@@ -47,7 +47,7 @@ cd $KERNEL_DIR
 make x86_64_defconfig -j $(nproc)
 cp ../../../cfg/kernel.cfg .config
 make bzImage -j $(nproc)
-cd ../..
+cd ..
 
 # Build glibc
 wget http://ftp.gnu.org/gnu/libc/$GLIBC_VER
@@ -87,12 +87,15 @@ cp -r sysroot/* ./root/
 rsync -a $BUSYBOX_DIR/BUSYBOX/ root
 cd root
 rm linuxrc
+sed -i 's/bash/sh/' ./bin/ldd
 mkdir dev proc sys
 cp ../../../ini/init .
 cp ../../../ini/inittab ./etc/inittab
 cp ../../../ini/logo.txt ./etc/logo.txt
 cp ../../../ini/network.sh ./etc/network.sh
 cp ../../../ini/shell.sh ./etc/shell.sh
+cp ../../../ini/resolv.conf ./etc/resolv.conf
+ln -s lib lib64
 find . | cpio -o -H newc | gzip > ../root.cpio.gz
 cd ../..
 
