@@ -32,7 +32,7 @@ mkdir iso
 mkdir -p ../dst/iso/boot/grub
 
 # Download & mount ISO
-ISO="msmd-linux-core.iso"
+ISO="msmd-linux-core-glibc.iso"
 if [ ! -f $ISO ]; then
   wget https://github.com/maksimKorzh/msmd-linux/releases/download/1/$ISO
 fi
@@ -48,7 +48,6 @@ cd packages
 # It's handy to download packages here
 # but it's not obvious for you can copy
 # files from any location
-git clone https://github.com/maksimKorzh/get
 git clone https://github.com/maksimKorzh/vici
 mkdir wpa_supplicant && cd wpa_supplicant
 curl http://s.minos.io/archive/rlsd2/x86_64/wpa_supplicant.tar.gz > wpa_supplicant.tar.gz
@@ -69,10 +68,9 @@ mkdir -p lib/firmware/rtw88
 # You're now in root, copy any files
 # to ./usr/bin or wherever within the
 # root to include them into root.cpio.gz
-cp ../get/src/get ./usr/bin/get                                 # install statically linked alternative to 'wget'
-cp ../vici/src/vici ./usr/bin/vici                              # install text editor
-cp ../wpa_supplicant/bin/* ./usr/bin/                           # install wpa supplicant
-cp ../../../fmw/rtw88/rtw8821c_fw.bin ./lib/firmware/rtw88      # install WiFi firmware for my laptop ;)
+cp ../vici/src/vici ./usr/bin/vici                            # install text editor
+cp ../wpa_supplicant/bin/* ./usr/bin/                         # install wpa supplicant
+cp ../../../fmw/rtw88/rtw8821c_fw.bin ./lib/firmware/rtw88    # install WiFi firmware for my laptop ;)
 
 # Update init files
 cp ../../../ini/init .
