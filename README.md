@@ -3,7 +3,7 @@
 # About
 Monkey See, Monkey Do LINUX is a didactic linux distribution serving
 educational purposes. It offers a customly configured Linux Kernel,
-statically linked BusyBox, DHCP networking support and BIOS/UEFI boot.
+Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
 
 # Project structure
     -> msmd-linux
@@ -17,11 +17,13 @@ statically linked BusyBox, DHCP networking support and BIOS/UEFI boot.
     --------> init                  ( First file Kernel runs on boot     )
     --------> inittab               ( BusyBox /sbin/init configuration   )
     --------> network.sh            ( Script ran by udhcpc on boot       )
+    --------> resolv.conf           ( DNS configuration file             )
     --------> wifi.sh               ( Script to connect to WiFi          )
     --------> logo.txt              ( Cute "Monkey See, Monkey Do" logo  )
 
     ----> src                       (         Distro build script        )
     --------> build_static_core.sh  ( Static MSMD Linux from scratch     )
+    --------> build_dynamic_core.sh ( Dynamic MSMD Linux from scratch    )
     --------> remaster_iso.sh       ( Add custom packages to ISO image   )
     --------> run.sh                ( Run MSMD Linux in QEMU             )
     --------> run_in_term.sh        ( Run MSMD Linux in QEMU via ncurses )
@@ -41,7 +43,7 @@ statically linked BusyBox, DHCP networking support and BIOS/UEFI boot.
 
 # Remastering ISO
 Use **remaster_iso.sh** script to add/remove packages to the RootFS.
-By default **msmd-linux-core.iso** is used as a starter but you can use any.
+By default **msmd-linux-core-glibc.iso** is used as a starter but you can use any.
 You can also modify files under **/ini** folder as they would be included.
 GRUB config may be altered at **/cfg/grub.cfg**
 
