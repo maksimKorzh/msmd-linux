@@ -22,6 +22,9 @@
 # Exit on error
 set -e
 
+# ISO image to remaster
+ISO="msmd-linux-core-glibc.iso"
+
 # Prepare directory
 if [ -d iso/boot ]; then
   sudo umount iso
@@ -31,27 +34,28 @@ rm -rf iso
 mkdir iso
 mkdir -p ../dst/iso/boot/grub
 
-# Download & mount ISO
-ISO="msmd-linux-core-glibc.iso"
 if [ ! -f $ISO ]; then
+  # Download & mount ISO
   wget https://github.com/maksimKorzh/msmd-linux/releases/download/1/$ISO
+
+  # Prepare working directory
+  rm -rf packages
+  mkdir packages
+  cd packages
+
+  # Download packages ~/msmd-linux/src/packages
+  #
+  # It's handy to download packages here
+  # but it's not obvious for you can copy
+  # files from any location
+  git clone https://github.com/maksimKorzh/vici
+  mkdir wpa_supplicant && cd wpa_supplicant
+  curl http://s.minos.io/archive/rlsd2/x86_64/wpa_supplicant.tar.gz > wpa_supplicant.tar.gz
+  tar -xvf wpa_supplicant.tar.gz && cd ..
+  cd ..
 fi
 sudo mount $ISO iso -t iso9660 -o loop
-
-# Prepare working directory
-rm -rf packages
-mkdir packages
 cd packages
-
-# Download packages ~/msmd-linux/src/packages
-#
-# It's handy to download packages here
-# but it's not obvious for you can copy
-# files from any location
-git clone https://github.com/maksimKorzh/vici
-mkdir wpa_supplicant && cd wpa_supplicant
-curl http://s.minos.io/archive/rlsd2/x86_64/wpa_supplicant.tar.gz > wpa_supplicant.tar.gz
-tar -xvf wpa_supplicant.tar.gz && cd ..
 
 # Unpack rootfs
 rm -rf root
