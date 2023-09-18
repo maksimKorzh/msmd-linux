@@ -1,6 +1,5 @@
 ::sysinit:clear
-::sysinit:echo "  Monkey See, Monkey Do LINUX"
 ::restart:/sbin/init
 ::shutdown:sync
 ::ctrlaltdel:/sbin/reboot
-::respawn:/bin/cttyhack /etc/shell.sh
+::respawn:/bin/cttyhack login -f msmd

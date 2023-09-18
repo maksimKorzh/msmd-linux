@@ -2,7 +2,7 @@
 
 # Suppress kernel messages
 dmesg -n 1
-clear
+clear && cat /etc/logo.txt
 
 # Mount file systems
 mount -t devtmpfs none /dev
@@ -11,7 +11,7 @@ mount -t sysfs none /sys
 
 # Create default group & user
 echo "staff:x:1001:" > /etc/group
-echo "msmd:x:1001:1001:msmd:/home/msmd:/bin/sh" > /etc/passwd
+echo "msmd:x:1001:1001:msmd:/home/msmd:/etc/shell.sh" > /etc/passwd
 chown -R msmd:staff /home
 chmod -R a+x /home 
 

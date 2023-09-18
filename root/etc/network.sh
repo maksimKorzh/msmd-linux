@@ -5,7 +5,6 @@ if [ "$router" ]; then
 fi
 
 if [ "$ip" ]; then
-  clear && cat /etc/logo.txt
   echo -e "DHCP configuration for device $interface"
   echo -e "IP:     \\e[1m$ip\\e[0m"
   echo -e "mask:   \\e[1m$mask\\e[0m"
