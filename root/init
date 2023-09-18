@@ -9,9 +9,16 @@ mount -t devtmpfs none /dev
 mount -t proc none /proc
 mount -t sysfs none /sys
 
+# Create root user & group
+echo "root:x:0:" >> /etc/group
+echo "root:x:0:0:root:/root:/bin/sh" >> /etc/passwd
+chown root:root /bin/sudo
+chown root:root /etc/sudoers
+chmod +s /bin/sudo
+
 # Create default group & user
-echo "staff:x:1001:" > /etc/group
-echo "msmd:x:1001:1001:msmd:/home/msmd:/etc/shell.sh" > /etc/passwd
+echo "staff:x:1001:" >> /etc/group
+echo "msmd:x:1001:1001:msmd:/home/msmd:/etc/shell.sh" >> /etc/passwd
 chown -R msmd:staff /home
 chmod -R a+x /home 
 
