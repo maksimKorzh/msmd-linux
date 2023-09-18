@@ -9,9 +9,14 @@ mount -t devtmpfs none /dev
 mount -t proc none /proc
 mount -t sysfs none /sys
 
+# Create default group & user
+echo "staff:x:1001:" > /etc/group
+echo "msmd:x:1001:1001:msmd:/home/msmd:/bin/sh" > /etc/passwd
+chown -R msmd:staff /home
+chmod -R a+x /home 
+
 # Setup networking
 for NETDEV in /sys/class/net/* ; do
-  echo "Found network device ${NETDEV##*/}"
   ip link set ${NETDEV##*/} up
   [ ${NETDEV##*/} != lo ] && udhcpc -b -i ${NETDEV##*/} -s /etc/network.sh
 done

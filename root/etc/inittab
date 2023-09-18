@@ -1,7 +1,6 @@
 ::sysinit:clear
-::sysinit:cat /etc/logo.txt
+::sysinit:echo "  Monkey See, Monkey Do LINUX"
 ::restart:/sbin/init
 ::shutdown:sync
-::shutdown:umount -a
 ::ctrlaltdel:/sbin/reboot
 ::respawn:/bin/cttyhack /etc/shell.sh
