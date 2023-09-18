@@ -6,9 +6,9 @@ educational purposes. It offers a customly configured Linux Kernel,
 Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
 
 # Scripts
-   - build.sh              ( Compile MSMD Linux from sources    )
-   - iso.sh                ( Burn ISO to USB flash              )
-   - run.sh                ( Run MSMD Linux in QEMU             )
+    - build.sh              ( Compile MSMD Linux from sources    )
+    - iso.sh                ( Burn ISO to USB flash              )
+    - run.sh                ( Run MSMD Linux in QEMU             )
 
 # Download ISO
 <a href="https://github.com/maksimKorzh/msmd-linux/releases/download/1/msmd-linux.iso">**MSMD Linux CORE:**</a>
