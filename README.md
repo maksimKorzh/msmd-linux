@@ -16,5 +16,5 @@ Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
  - vici (text editor)
 <br>
 
-# YouTube Tutorials
+# Tutorials
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DAXVgdpe7HE/0.jpg)](https://www.youtube.com/watch?v=DAXVgdpe7HE&list=PLLfIBXQeu3aZuc_0xTE2dY3juntHF5xJY&index=2)
