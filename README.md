@@ -1,4 +1,4 @@
-[![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/maksimKorzh/msmd-linux/main/img/msmd-linux.png)](https://www.youtube.com/watch?v=EVTw4YqPdKA)
+[![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/maksimKorzh/msmd-linux/main/root/var/local/img/msmd-linux.png)](https://www.youtube.com/watch?v=EVTw4YqPdKA)
 
 # About
 Monkey See, Monkey Do LINUX is a didactic linux distribution serving
