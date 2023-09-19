@@ -6,7 +6,7 @@ educational purposes. It offers a customly configured Linux Kernel,
 Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
 
 # Download
-<a href="https://github.com/maksimKorzh/msmd-linux/releases/download/1/msmd-linux.iso">**MSMD Linux ISO:**</a>
+<a href="https://github.com/maksimKorzh/msmd-linux/releases/tag/0.1">**MSMD Linux ISO:**</a>
  - Kernel 5.10.76
  - BusyBox 1.36.1
  - Glibc 2.38
@@ -17,7 +17,7 @@ Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
 
 # Build from sources
 Just run **build.sh** to create ISO from scratch.
-If something doesn't work, which is very likely to occur
+If something doesn't work, which is very likely to occur, 
 watch the tutorials below.
 
 # Tutorials
