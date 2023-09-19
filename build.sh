@@ -66,7 +66,7 @@ build_kernel() {
 }
 
 # Build glibc
-  build_glibc() {
+build_glibc() {
   cd $MSMD_DIR
   wget http://ftp.gnu.org/gnu/libc/$GLIBC_VER
   tar -xvf $GLIBC_VER
@@ -141,11 +141,11 @@ build_iso() {
 }
 
 # Main
-#get_deps
-#build_init
-#build_kernel
-#build_glibc
-#build_sysroot
-#build_busybox
+get_deps
+build_init
+build_kernel
+build_glibc
+build_sysroot
+build_busybox
 build_rootfs
 build_iso

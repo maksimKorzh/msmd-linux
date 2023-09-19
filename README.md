@@ -14,5 +14,10 @@ Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
  - wpa supplicant
  - vici (text editor)
 
+# Build from sources
+Just run **build.sh** to create ISO from scratch.
+If something doesn't work, which is very likely to occur
+watch the tutorials below.
+
 # Tutorials
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DAXVgdpe7HE/0.jpg)](https://www.youtube.com/watch?v=DAXVgdpe7HE&list=PLLfIBXQeu3aZuc_0xTE2dY3juntHF5xJY&index=2)
