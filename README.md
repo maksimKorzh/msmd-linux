@@ -13,6 +13,7 @@ Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
  - RTW88 Wifi firmware
  - wpa supplicant
  - vici (text editor)
+ - tce-load (tiny core linux package manager)
 
 # Build from sources
 Just run **build.sh** to create ISO from scratch.
