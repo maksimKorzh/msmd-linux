@@ -43,7 +43,7 @@ if [ ! -d $ISO_SRC_DIR ]; then
   cd $REMASTER_DIR
 
   # Download & mount ISO
-  wget https://github.com/maksimKorzh/msmd-linux/releases/download/0.1/$ISO
+  wget https://github.com/maksimKorzh/msmd-linux/releases/download/0.2/$ISO
 
   # Download packages ~/msmd-linux/src/packages
   #
@@ -71,8 +71,7 @@ cp -r $PWD_DIR/root/* $REMASTER_DIR/root
 find . | fakeroot -i $REMASTER_DIR/root.fakeroot cpio -o -H newc | gzip > $REMASTER_DIR/root.cpio.gz
 
 # Create ISO file
-sudo cp /home/cmk/Downloads/bzImage $ISO_DST_DIR/boot/bzImage
-#sudo cp $ISO_SRC_DIR/boot/bzImage $ISO_DST_DIR/boot/bzImage
+sudo cp $ISO_SRC_DIR/boot/bzImage $ISO_DST_DIR/boot/bzImage
 sudo cp $REMASTER_DIR/root.cpio.gz $ISO_DST_DIR/boot/root.cpio.gz
 cp $PWD_DIR/root/var/local/config/grub.cfg $ISO_DST_DIR/boot/grub/grub.cfg
 grub-mkrescue -o $PWD_DIR/msmd-linux.iso $ISO_DST_DIR
