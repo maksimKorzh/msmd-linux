@@ -10,7 +10,7 @@ Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
  - Kernel 5.10.76
  - BusyBox 1.36.1
  - Glibc 2.38
- - RTW88 Wifi firmware
+ - ATH10K(Atheros), RTW88 Wifi firmware
  - wpa supplicant
  - vici (text editor)
  - tce-load (tiny core linux package manager)
@@ -19,6 +19,13 @@ Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
 Just run **build.sh** to create ISO from scratch.
 If something doesn't work, which is very likely to occur, 
 watch the tutorials below.
+
+# Remaster ISO
+If you don't want to build kernel, glibc and busybox from scratch
+and simply want to alter the root file system (root.cpio.gz initramfs contents)
+feel free to try luck with **remaster.sh**, alter the **msmd-linux/root** template
+folder by adding/removing files or directories and run **remaster.sh**, a new
+**msmd-linux.iso** file should be generated.
 
 # Tutorials
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DAXVgdpe7HE/0.jpg)](https://www.youtube.com/watch?v=DAXVgdpe7HE&list=PLLfIBXQeu3aZuc_0xTE2dY3juntHF5xJY&index=2)
