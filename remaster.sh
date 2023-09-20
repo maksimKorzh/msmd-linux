@@ -50,6 +50,7 @@ if [ ! -d $ISO_SRC_DIR ]; then
   # It's handy to download packages here
   # but it's not obvious for you can copy
   # files from any location
+
   cd $PWD_DIR
 fi
 
@@ -70,7 +71,8 @@ cp -r $PWD_DIR/root/* $REMASTER_DIR/root
 find . | fakeroot -i $REMASTER_DIR/root.fakeroot cpio -o -H newc | gzip > $REMASTER_DIR/root.cpio.gz
 
 # Create ISO file
-sudo cp $ISO_SRC_DIR/boot/bzImage $ISO_DST_DIR/boot/bzImage
+sudo cp /home/cmk/Downloads/bzImage $ISO_DST_DIR/boot/bzImage
+#sudo cp $ISO_SRC_DIR/boot/bzImage $ISO_DST_DIR/boot/bzImage
 sudo cp $REMASTER_DIR/root.cpio.gz $ISO_DST_DIR/boot/root.cpio.gz
 cp $PWD_DIR/root/var/local/config/grub.cfg $ISO_DST_DIR/boot/grub/grub.cfg
 grub-mkrescue -o $PWD_DIR/msmd-linux.iso $ISO_DST_DIR
