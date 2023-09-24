@@ -3,7 +3,7 @@
 # Suppress kernel messages
 dmesg -n 1
 clear && cat /etc/logo.txt
-
+echo "fuck"
 # Mount file systems
 mount -t devtmpfs none /dev
 mount -t proc none /proc
