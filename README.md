@@ -14,7 +14,7 @@ Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
  - wpa supplicant
  - vici (text editor)
 
-# How to install MSMD Linux on USB or HDD assuming UEFI boot
+# How to install MSMD Linux on USB/HDD (UEFI boot)
 1. Create two GPT partitions of types ESP (100mb) and Linux (all the rest)
 2. Format first partition to FAT32 and second to EXT4 or EXT2
 3. Run **hdd.sh** script, to update **init** script in initramfs
