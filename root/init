@@ -14,9 +14,8 @@ chown root:root / /bin/sudo /etc/sudoers
 chmod +s /bin/sudo
 chown -R msmd:staff /home /tmp /etc/sysconfig
 chmod -R a+x /home /tmp /etc/sysconfig
-
-# Create /proc/mounts link
-ln -s /proc/mounts /etc/mtab
+chown -R msmd:staff /sbin/reboot /sbin/poweroff
+chmod -R a+x /home /sbin/reboot/ sbin/poweroff
 
 # Setup networking
 for NETDEV in /sys/class/net/* ; do

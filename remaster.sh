@@ -63,6 +63,9 @@ rm -rf root
 mkdir root
 cd root
 gunzip -c $ISO_SRC_DIR/boot/root.cpio.gz | fakeroot -s $REMASTER_DIR/root.fakeroot cpio -i
+rm -rf etc/init.d
+rm -rf etc/sysconfig
+rm -rf usr/local/tce.installed
 
 # Update files
 cp -r $PWD_DIR/root/* $REMASTER_DIR/root
@@ -70,9 +73,34 @@ cp -r $PWD_DIR/root/* $REMASTER_DIR/root
 # Pack rootfs
 find . | fakeroot -i $REMASTER_DIR/root.fakeroot cpio -o -H newc | gzip > $REMASTER_DIR/root.cpio.gz
 
+# Update initramfs init
+echo "Enter device path where rootfs resides: (e.g. /dev/sda2)"
+DEV=""
+read DEV
+echo "Enter device boot delay: (e.g. 5 to wait for 5 secs until USB drive is connected)"
+DELAY=""
+read DELAY
+echo "#!/bin/sh" > init
+echo "dmesg -n 1" >> init
+echo "clear" >> init
+echo "mount -t devtmpfs none /dev" >> init
+echo "mount -t proc none /proc" >> init
+echo "mount -t sysfs none /sys" >> init
+echo "echo switching to rootfs at $DEV" >> init
+echo "sleep $DELAY" >> init
+echo "mkdir mnt" >> init
+echo "mount $DEV /mnt" >> init
+echo "exec switch_root /mnt /init" >> init
+chmod a+x init
+find . | fakeroot -i $REMASTER_DIR/root.fakeroot cpio -o -H newc | gzip > $REMASTER_DIR/initramfs.cpio.gz
+
+# Restore init
+cp $PWD_DIR/root/init $REMASTER_DIR/root/init
+
 # Create ISO file
 sudo cp $ISO_SRC_DIR/boot/bzImage $ISO_DST_DIR/boot/bzImage
 sudo cp $REMASTER_DIR/root.cpio.gz $ISO_DST_DIR/boot/root.cpio.gz
+sudo cp $REMASTER_DIR/initramfs.cpio.gz $REMASTER_DIR/root/boot/root.cpio.gz
 cp $PWD_DIR/root/var/local/config/grub.cfg $ISO_DST_DIR/boot/grub/grub.cfg
 grub-mkrescue -o $PWD_DIR/msmd-linux.iso $ISO_DST_DIR
 
