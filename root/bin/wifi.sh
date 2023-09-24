@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Setup networking
-. /bin/ethernet.sh
-
 # Change to your SSID and WPA password
 SSID="home_2.4"
 PASS="Admin_1234"
