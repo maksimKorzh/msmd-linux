@@ -24,6 +24,7 @@ Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
 6. In ESP partition on a target drive in a EFI/ubuntu/grubcfg adjust the UUID to match your drive
 7. In linux partition on a target drive in /boot/grub/grub.cfg adjust root to match your drive
 8. Disable secure boot in your UEFI firmware settings, should be able to boot from your drive
+
     Essentially you need to end up with two GPT partitions partitions like
     /dev/sda1 (ESP, fat32) and /dev/sda2 (Linux, ext4). Script **hdd.sh** allows you
     to pick up custom block device names (e.g. /dev/nvme0n1p instead of /dev/sda1)
