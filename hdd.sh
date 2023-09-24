@@ -2,7 +2,7 @@
 
 ################################################################################
 #               _
-#             ,//)         Update MSMD Linux INITRAMFS image
+#             ,//)         Update MSMD Linux INITRAMFS image to run on HDD
 #              ) /          __  __             _                ____
 #             / /          |  \/  | ___  _ __ | | _____ _   _  / ___|  ___  ___
 #       _,^^,/ /           | |\/| |/ _ \| '_ \| |/ / _ \ | | | \___ \ / _ \/ _ \
@@ -73,20 +73,9 @@ echo "mkdir mnt" >> init
 echo "mount $DEV /mnt" >> init
 echo "exec switch_root /mnt /init" >> init
 chmod a+x init
-
-# Restore init
-cp $PWD_DIR/root/init $REMASTER_DIR/root/init
-
-# Update UEFI boot device UUID
-UUID=""
-echo "Enter root UUID: (e.g. 0426da8d-2603-4888-be99-a781564f9a02)"
-read UUID
-echo "search.fs_uuid $UUID root" > $PWD_DIR/EFI/ubuntu/grub.cfg
-echo "set prefix=($root)'/boot/grub'" >> $PWD_DIR/EFI/ubuntu/grub.cfg
-echo "configfile $prefix/grub.cfg" >> $PWD_DIR/EFI/ubuntu/grub.cfg
+find . | fakeroot -i $REMASTER_DIR/root.fakeroot cpio -o -H newc | gzip > $REMASTER_DIR/initramfs.cpio.gz
 
 # Update initramfs
-find . | fakeroot -i $REMASTER_DIR/root.fakeroot cpio -o -H newc | gzip > $REMASTER_DIR/initramfs.cpio.gz
 sudo cp $REMASTER_DIR/initramfs.cpio.gz $PWD_DIR/root/boot/root.cpio.gz
 
 # Unmount ISO

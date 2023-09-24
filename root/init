@@ -3,7 +3,7 @@
 # Suppress kernel messages
 dmesg -n 1
 clear && cat /etc/logo.txt
-echo "fuck"
+
 # Mount file systems
 mount -t devtmpfs none /dev
 mount -t proc none /proc
@@ -12,10 +12,8 @@ mount -t sysfs none /sys
 # Set permissions
 chown root:root / /bin/sudo /etc/sudoers
 chmod +s /bin/sudo
-chown -R msmd:staff /home /tmp /etc/sysconfig
-chmod -R a+x /home /tmp /etc/sysconfig
-chown -R msmd:staff /sbin/reboot /sbin/poweroff
-chmod -R a+x /home /sbin/reboot/ sbin/poweroff
+chown -R msmd:staff /home /tmp
+chmod -R a+x /home /tmp
 
 # Setup networking
 for NETDEV in /sys/class/net/* ; do

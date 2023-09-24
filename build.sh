@@ -110,6 +110,7 @@ build_rootfs() {
   rm -rf rootfs
   mkdir rootfs
   cp -r $PWD_DIR/root/* $MSMD_DIR/rootfs
+  sudo rm -rf $MSMD_DIR/rootfs/boot
   cp -r $BUSYBOX_DIR/BUSYBOX/* $MSMD_DIR/rootfs
   cp $SYSROOT_DIR/lib/libm.so.6 $MSMD_DIR/rootfs/lib/libm.so.6
   cp $SYSROOT_DIR/lib/libc.so.6 $MSMD_DIR/rootfs/lib/libc.so.6
@@ -141,11 +142,11 @@ build_iso() {
 }
 
 # Main
-get_deps
-build_init
-build_kernel
-build_glibc
-build_sysroot
-build_busybox
+#get_deps
+#build_init
+#build_kernel
+#build_glibc
+#build_sysroot
+#build_busybox
 build_rootfs
 build_iso
