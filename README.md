@@ -14,6 +14,14 @@ Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
  - wpa supplicant
  - vici (text editor)
 
+# Networking
+If you're running an ISO either on QEMU or real hardware
+ethernet connection should be established automatically
+if available. If you want WiFi connection, run **wifi.sh**
+after manually adjusting SSID and password under **/bin/wifi.sh**.
+If you've installed MSMD Linux on USB/HDD you'll need to manually
+run either **ethernet.sh** or **wifi.sh** to connect to the network.
+
 # How to install MSMD Linux on USB/HDD (UEFI boot)
 1. Create two GPT partitions of types ESP (100mb) and Linux (all the rest)
 2. Format first partition to FAT32 and second to EXT4 or EXT2

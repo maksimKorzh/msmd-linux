@@ -67,6 +67,7 @@ echo "clear" >> init
 echo "mount -t devtmpfs none /dev" >> init
 echo "mount -t proc none /proc" >> init
 echo "mount -t sysfs none /sys" >> init
+echo "cat /etc/logo.txt" >> init
 echo "echo switching to rootfs at $DEV" >> init
 echo "sleep $DELAY" >> init
 echo "mkdir mnt" >> init
