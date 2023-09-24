@@ -25,12 +25,26 @@ Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
 7. In linux partition on a target drive in /boot/grub/grub.cfg adjust root to match your drive
 8. Disable secure boot in your UEFI firmware settings, you should be able to boot from your drive
 
-    Essentially you need to end up with two GPT partitions partitions like<br>
-    /dev/sda1 (ESP, fat32) and /dev/sda2 (Linux, ext4). Script **hdd.sh** allows you<br>
-    to pick up custom block device names (e.g. /dev/nvme0n1p instead of /dev/sda1)<br>
-    that would be used under initramfs init script to switch to the real root,<br>
-    this is very important because if the target block device is not specified<br>
-    properly switching from initramfs to actual root would fail.
+Essentially you need to end up with two GPT partitions partitions like<br>
+/dev/sda1 (ESP, fat32) and /dev/sda2 (Linux, ext4). Script **hdd.sh** allows you<br>
+to pick up custom block device names (e.g. /dev/nvme0n1p instead of /dev/sda1)<br>
+that would be used under initramfs init script to switch to the real root,<br>
+this is very important because if the target block device is not specified<br>
+properly switching from initramfs to actual root would fail.
+
+# Package manager
+I've been playing around with tce-load from Tiny Core Linux and generally it's
+compatible if rootfs is adjusted accordingly, however it fails to save changes
+after reboot because tcl packages reside under /tmp and get erased every reboot.
+I'm now working on creating a custom package manager based on tce-load but with
+a persistent storage of packages.
+
+# Customizing rootfs
+Earlier I've been providing scripts to remaster ISO but that resulted in mess,
+so eventually I switched to **install to USB/HDD** model. With this approach
+once you've installed MSMD Linux you're free to alter rootfs the way you want,
+e.g. add custom WiFi firmare (you'd probably need to recompile the kernel in that case)
+or manually compiled package or some libraries.
 
 # Build from sources
 Use **build.sh** to create ISO from scratch<br>
