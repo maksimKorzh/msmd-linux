@@ -25,11 +25,11 @@ Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
 7. In linux partition on a target drive in /boot/grub/grub.cfg adjust root to match your drive
 8. Disable secure boot in your UEFI firmware settings, should be able to boot from your drive
 
-    Essentially you need to end up with two GPT partitions partitions like
-    /dev/sda1 (ESP, fat32) and /dev/sda2 (Linux, ext4). Script **hdd.sh** allows you
-    to pick up custom block device names (e.g. /dev/nvme0n1p instead of /dev/sda1)
-    that would be used under initramfs init script to switch to the real root,
-    this is very important because if the target block device is not specified
+    Essentially you need to end up with two GPT partitions partitions like<br>
+    /dev/sda1 (ESP, fat32) and /dev/sda2 (Linux, ext4). Script **hdd.sh** allows you<br>
+    to pick up custom block device names (e.g. /dev/nvme0n1p instead of /dev/sda1)<br>
+    that would be used under initramfs init script to switch to the real root,<br>
+    this is very important because if the target block device is not specified<br>
     properly switching from initramfs to actual root would fail.
 
 # Build from sources
