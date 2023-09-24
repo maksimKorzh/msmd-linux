@@ -15,17 +15,26 @@ Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
  - vici (text editor)
 
 # How to install MSMD Linux on USB or HDD assuming UEFI boot
-1. Create two GPT partitions of types ESP (100mb) and Linux (the rest size)
-2. Format first partition as FAT32 and second as EXT4 or EXT2
+1. Create two GPT partitions of types ESP (100mb) and Linux (all the rest)
+2. Format first partition to FAT32 and second to EXT4 or EXT2
+3. Run **hdd.sh** script, to update **init** script in initramfs
 3. Mount both partitions
 4. Copy /msmd-linux/EFI to ESP partition (this is bootloader)
 5. Copy /msmd-root/root contents to Linux partition (this is root fs)
 6. In ESP partition on a target drive in a EFI/ubuntu/grubcfg adjust the UUID to match your drive
 7. In linux partition on a target drive in /boot/grub/grub.cfg adjust root to match your drive
 8. Disable secure boot in your UEFI firmware settings, should be able to boot from your drive
+    Essentially you need to end up with two GPT partitions partitions like
+    /dev/sda1 (ESP, fat32) and /dev/sda2 (Linux, ext4). Script **hdd.sh** allows you
+    to pick up custom block device names (e.g. /dev/nvme0n1p instead of /dev/sda1)
+    that would be used under initramfs init script to switch to the real root,
+    this is very important because if the target block device is not specified
+    properly switching from initramfs to actual root would fail.
 
 # Build from sources
-Just run **build.sh** to create ISO from scratch.
+Use **build.sh** to create ISO from scratch<br>
+Use **run.sh** to test in under QEMU<br>
+Use **iso.sh** to burn ISO to USB flash drive<br>
 If something doesn't work, which is very likely to occur, 
 watch the tutorials below.
 
