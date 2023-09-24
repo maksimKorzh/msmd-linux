@@ -26,7 +26,6 @@ set -e
 ISO="msmd-linux.iso"
 PWD_DIR="$(pwd)"
 REMASTER_DIR="$PWD/remaster"
-ROOT_DIR="$PWD/root"
 ISO_SRC_DIR="$PWD/remaster/iso_src"
 ISO_DST_DIR="$PWD/remaster/iso_dst"
 
@@ -43,7 +42,7 @@ if [ ! -d $ISO_SRC_DIR ]; then
   cd $REMASTER_DIR
 
   # Download & mount ISO
-  wget https://github.com/maksimKorzh/msmd-linux/releases/download/0.2/$ISO
+  wget https://github.com/maksimKorzh/msmd-linux/releases/download/0.1/$ISO
 
   # Download packages ~/msmd-linux/src/packages
   #
@@ -68,7 +67,7 @@ rm -rf etc/sysconfig
 rm -rf usr/local/tce.installed
 
 # Update files
-cp -r $PWD_DIR/root/* $REMASTER_DIR/root
+cp -rn $PWD_DIR/root/* $REMASTER_DIR/root
 
 # Pack rootfs
 find . | fakeroot -i $REMASTER_DIR/root.fakeroot cpio -o -H newc | gzip > $REMASTER_DIR/root.cpio.gz
@@ -100,7 +99,7 @@ cp $PWD_DIR/root/init $REMASTER_DIR/root/init
 # Create ISO file
 sudo cp $ISO_SRC_DIR/boot/bzImage $ISO_DST_DIR/boot/bzImage
 sudo cp $REMASTER_DIR/root.cpio.gz $ISO_DST_DIR/boot/root.cpio.gz
-sudo cp $REMASTER_DIR/initramfs.cpio.gz $REMASTER_DIR/root/boot/root.cpio.gz
+sudo cp $REMASTER_DIR/initramfs.cpio.gz $PWD_DIR/boot/root.cpio.gz
 cp $PWD_DIR/root/var/local/config/grub.cfg $ISO_DST_DIR/boot/grub/grub.cfg
 grub-mkrescue -o $PWD_DIR/msmd-linux.iso $ISO_DST_DIR
 
