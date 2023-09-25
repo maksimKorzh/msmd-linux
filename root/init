@@ -4,6 +4,12 @@
 dmesg -n 1
 clear
 
+# Create directories
+mkdir -p home/msmd
+mkdir -p dev
+mkdir -p proc
+mkdir -p sys
+
 # Mount file systems
 mount -t devtmpfs none /dev
 mount -t proc none /proc
@@ -11,6 +17,7 @@ mount -t sysfs none /sys
 
 # Set permissions
 chown root:root / /bin/sudo /etc/sudoers
+chmod 0440 /etc/sudoers
 chmod +s /bin/sudo
 chown -R msmd:staff /home /tmp
 chmod -R a+x /home /tmp
