@@ -5,10 +5,10 @@ SSID="home_2.4"
 PASS="Admin_1234"
 
 # Create WPA supplicant configuration file
-wpa_passphrase $SSID $PASS > /home/wifi.conf
+wpa_passphrase $SSID $PASS > /home/msmd/wifi.conf
 
 # Connect to SSID
-sudo wpa_supplicant -B -D nl80211 -i wlan0 -c /home/wifi.conf
+sudo wpa_supplicant -B -D nl80211 -i wlan0 -c /home/msmd/wifi.conf
 sleep 5
 
 # Receive IP address
