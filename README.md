@@ -44,8 +44,17 @@ properly switching from initramfs to actual root would fail.
 I've been playing around with tce-load from Tiny Core Linux and generally it's
 compatible if rootfs is adjusted accordingly, however it fails to save changes
 after reboot because tcl packages reside under /tmp and get erased every reboot.
-I'm now working on creating a custom package manager based on tce-load but with
-a persistent storage of packages.
+So I've created a custom package installer with a persistent storage of packages.
+It's called **pi** and available under **root/bin/** folder. If you're using
+MSMD Linux ISO image you can download this repo with command:<br>
+**wget https://github.com/maksimKorzh/msmd-linux/archive/refs/heads/master.zip**<br>
+and then manually install **pi** to **\bin** folder just to tinker with it. If you're
+installing MSMD Linux onto HDD or USB **pi** would be there by default.<br>
+<br>
+Usage: **~$ pi vim**<br>
+<br>
+If you're unsure whether package exists you can run the following command:<br>
+**wget -O- http://tinycorelinux.net/14.x/x86_64/tcz | grep your_keyword**
 
 # Customizing rootfs
 Earlier I've been providing scripts to remaster ISO but that resulted in mess,

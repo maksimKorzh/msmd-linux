@@ -1,0 +1,56 @@
+#!/bin/sh
+
+###############################################
+#
+#           Linux Package Installer           
+#
+###############################################
+
+# Tiny Core Linux package repository
+REPO="http://tinycorelinux.net/14.x/x86_64/tcz"
+
+# Download folder
+DOWNLOAD="/tmp/packages"
+
+# Current working directory
+PWD="$(pwd)"
+
+# Download single package
+fetch() {
+  cd $PWD
+  if [ ! -z $1 ]; then
+    mkdir -p $DOWNLOAD/$1
+    if [ -f $DOWNLOAD/$1/$1.tcz ]; then
+      echo "Package $1 is already installed"
+    else
+      wget -O $DOWNLOAD/$1/$1.tcz $REPO/$1.tcz
+      wget -O $DOWNLOAD/$1/$1.dep $REPO/$1.tcz.dep
+      wget -O $DOWNLOAD/$1/$1.md5 $REPO/$1.tcz.md5.txt
+      cd $DOWNLOAD/$1 && md5sum -c $1.md5
+      if [ $? -ne 0 ]; then exit 1; fi
+      DEPS=$(cat $1.dep 2> /dev/null)
+      if [ $? -ne 0 ]; then return; fi
+      for DEP in $DEPS; do
+        fetch $(echo $DEP | sed 's:\.tcz::')
+      done
+    fi
+  else
+    echo "Usage: ~$ pi nano"
+  fi
+}
+
+install() {
+  sudo mkdir -p /usr/local
+  PACS=$(ls $DOWNLOAD)
+  for PAC in $PACS; do
+    sudo mount $DOWNLOAD/$PAC/$PAC.tcz $DOWNLOAD/$PAC
+    sudo cp -r $DOWNLOAD/$PAC/usr/local/* /usr/local/
+    sudo umount $DOWNLOAD/$PAC
+  done
+}
+
+# Main
+rm -rf $DOWNLOAD
+fetch $1
+install
+rm -rf $DOWNLOAD
