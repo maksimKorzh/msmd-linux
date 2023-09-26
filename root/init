@@ -14,13 +14,14 @@ mkdir -p sys
 mount -t devtmpfs none /dev
 mount -t proc none /proc
 mount -t sysfs none /sys
+mount -t tmpfs none /tmp
 
 # Set permissions
 chown root:root / /bin/sudo /etc/sudoers
 chmod 0440 /etc/sudoers
 chmod +s /bin/sudo
 chown -R msmd:staff /home /tmp
-chmod -R a+x /home /tmp
+chmod -R a+ /home /tmp
 
 # Start buxybox init as PID 1
 exec /sbin/init
