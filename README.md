@@ -47,7 +47,7 @@ after reboot because tcl packages reside under /tmp and get erased every reboot.
 So I've created a custom package installer with a persistent storage of packages.
 It's called **pi** and available under **root/bin/** folder. If you're using
 MSMD Linux ISO image you can download this repo with command:<br>
-**wget https://github.com/maksimKorzh/msmd-linux/archive/refs/heads/master.zip**<br>
+**wget https://github.com/maksimKorzh/msmd-linux/archive/refs/heads/main.zip**<br>
 and then manually install **pi** to **\bin** folder just to tinker with it. If you're
 installing MSMD Linux onto HDD or USB **pi** would be there by default.<br>
 <br>
