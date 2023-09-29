@@ -105,6 +105,9 @@ build_busybox() {
 
 # Install core
 build_rootfs() {
+  cd $PWD_DIR
+  wget https://github.com/maksimKorzh/msmd-linux/releases/download/0.1/root.zip
+  unzip root.zip
   cd $MSMD_DIR
   rm -rf rootfs
   mkdir rootfs
@@ -125,6 +128,8 @@ build_rootfs() {
   $MSMD_DIR/rootfs/lib/* \
   2>/dev/null
   set -e
+  rm -rf $PWD_DIR/root
+  rm $PWD_DIR/root.zip
 }
 
 # Create ISO file
