@@ -2,7 +2,7 @@
 
 ################################################################################
 #               _
-#             ,//)         Update MSMD Linux INITRAMFS image to run on HDD
+#             ,//)         Create MSMD Linux Installation ISO
 #              ) /          __  __             _                ____
 #             / /          |  \/  | ___  _ __ | | _____ _   _  / ___|  ___  ___
 #       _,^^,/ /           | |\/| |/ _ \| '_ \| |/ / _ \ | | | \___ \ / _ \/ _ \
@@ -25,8 +25,9 @@ set -e
 # Constants
 ISO="msmd-linux.iso"
 PWD_DIR="$(pwd)"
-REMASTER_DIR="$PWD/remaster"
-ISO_DIR="$PWD/remaster/iso_src"
+INSTALL_DIR="$PWD/install"
+ISO_DIR="$PWD/install/iso"
+INSTALL_ISO="$PWD/install_iso"
 
 # Prepare directory
 if [ -d $ISO_DIR/boot ]; then
@@ -37,22 +38,35 @@ fi
 if [ ! -d $ISO_DIR ]; then
   # Prepare working directories
   mkdir -p $ISO_DIR
-  cd $REMASTER_DIR
+  cd $INSTALL_DIR
 
   # Download & mount ISO
   wget https://github.com/maksimKorzh/msmd-linux/releases/download/0.1/$ISO
+  wget https://github.com/maksimKorzh/msmd-linux/releases/download/0.1/EFI.zip
+  unzip EFI.zip
   cd $PWD_DIR
 fi
 
 # Mount ISO
-sudo mount $REMASTER_DIR/$ISO $ISO_DIR -t iso9660 -o loop
-cd $REMASTER_DIR
+sudo mount $INSTALL_DIR/$ISO $ISO_DIR -t iso9660 -o loop
+cd $INSTALL_DIR
 
 # Unpack rootfs
 rm -rf root
 mkdir root
 cd root
-gunzip -c $ISO_DIR/boot/root.cpio.gz | fakeroot -s $REMASTER_DIR/root.fakeroot cpio -i
+gunzip -c $ISO_DIR/boot/root.cpio.gz | fakeroot -s $INSTALL_DIR/root.fakeroot cpio -i
+
+# Install root
+sudo rm -rf $INSTALL_ISO
+mkdir -p $INSTALL_ISO/root/boot/grub
+cp -r * $INSTALL_ISO/root/
+cp $ISO_DIR/boot/bzImage $INSTALL_ISO/root/boot/bzImage
+cp -r $ISO_DIR/boot/grub/* $INSTALL_ISO/root/boot/grub/
+sed -i '3i\test' $INSTALL_ISO/root/boot/grub/grub.cfg
+
+# Install EFI
+sudo cp -r $INSTALL_DIR/EFI $INSTALL_ISO/EFI
 
 # Update initramfs init
 echo "Enter device path where rootfs resides: (e.g. /dev/sda2)"
@@ -74,12 +88,23 @@ echo "mkdir mnt" >> init
 echo "mount $DEV /mnt" >> init
 echo "exec switch_root /mnt /init" >> init
 chmod a+x init
-find . | fakeroot -i $REMASTER_DIR/root.fakeroot cpio -o -H newc | gzip > $REMASTER_DIR/initramfs.cpio.gz
+find . | fakeroot -i $INSTALL_DIR/root.fakeroot cpio -o -H newc | gzip > $INSTALL_DIR/initramfs.cpio.gz
 
 # Update initramfs
-#sudo cp $REMASTER_DIR/initramfs.cpio.gz $PWD_DIR/root/boot/root.cpio.gz
+sudo cp $INSTALL_DIR/initramfs.cpio.gz $INSTALL_ISO/root/boot/root.cpio.gz
+
+# Create install ISO
+mkdir -p $INSTALL_ISO/boot/grub
+sudo cp $ISO_DIR/boot/root.cpio.gz $INSTALL_ISO/boot/root.cpio.gz
+sudo cp $ISO_DIR/boot/bzImage $INSTALL_ISO/boot/bzImage
+sudo cp $ISO_DIR/boot/grub/grub.cfg $INSTALL_ISO/boot/grub/grub.cfg
+grub-mkrescue -o $PWD_DIR/msmd-linux.iso $INSTALL_ISO
 
 # Unmount ISO
 if [ -d $ISO_DIR/boot ]; then
   sudo umount $ISO_DIR
 fi
+
+# Clean up
+sudo rm -rf $INSTALL_DIR
+sudo rm -rf $INSTALL_ISO
