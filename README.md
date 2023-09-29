@@ -46,10 +46,11 @@ I've been playing around with tce-load from Tiny Core Linux and generally it's
 compatible if rootfs is adjusted accordingly, however it fails to save changes
 after reboot because tcl packages reside under /tmp and get erased every reboot.
 So I've created a custom package installer with a persistent storage of packages.
-It's called **dipi**. It would get installed after running command **install_packages**.
+It's called <a href="https://github.com/maksimKorzh/dipi">**dipi**</a>.
+It would get installed after running command **install_packages**.
 <br>
 <br>
-    Usage: **~$ dipi vim**<br>
+Usage: **~$ dipi vim**<br>
 <br>
 If you're unsure whether package exists you can run the following command:<br>
 **wget -O- http://tinycorelinux.net/14.x/x86_64/tcz | grep your_keyword**
