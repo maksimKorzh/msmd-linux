@@ -63,7 +63,6 @@ mkdir -p $INSTALL_ISO/root/boot/grub
 cp -r * $INSTALL_ISO/root/
 cp $ISO_DIR/boot/bzImage $INSTALL_ISO/root/boot/bzImage
 cp -r $ISO_DIR/boot/grub/* $INSTALL_ISO/root/boot/grub/
-sed -i '3i\test' $INSTALL_ISO/root/boot/grub/grub.cfg
 
 # Install EFI
 sudo cp -r $INSTALL_DIR/EFI $INSTALL_ISO/EFI
