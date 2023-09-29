@@ -77,6 +77,9 @@ read DELAY
 echo "#!/bin/sh" > init
 echo "dmesg -n 1" >> init
 echo "clear" >> init
+echo "mkdir -p dev" >> init
+echo "mkdir -p proc" >> init
+echo "mkdir -p sys" >> init
 echo "mount -t devtmpfs none /dev" >> init
 echo "mount -t proc none /proc" >> init
 echo "mount -t sysfs none /sys" >> init
