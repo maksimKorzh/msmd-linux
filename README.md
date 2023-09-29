@@ -23,20 +23,20 @@ to WiFi run **wifi** after manually adjusting SSID and password under **/bin/wif
 2. Run **install.sh** command to generate installation ISO
 3. Burn installation ISO to USB flash drive using **burn-iso.sh**
 4. Boot from your USB flash drive
-5. Connect to network by running **ethernet** or **wifi** (don't forget tochange SSID/PASS)
-6. Run command **install_packages**, this would install fdisk, mkfs.ext4 and more
+5. Connect to network by running **ethernet** or **wifi** (don't forget to change SSID/PASS)
+6. Run command **install_packages**, this would install fdisk, mkfs.ext4 and others
 7. Create two GPT partitions of types ESP (100mb) and Linux (all the rest) on HDD
 8. Format first partition to FAT32 and second to EXT4
 9. Mount both partitions
 10. Copy /msmd-linux/EFI to ESP partition (this is bootloader)
 11. Copy /msmd-root/root contents to Linux partition (this is root fs)
 12. In ESP partition on a target drive in a EFI/ubuntu/grub.cfg adjust the UUID to match your drive
-13. In linux partition on a target drive in /boot/grub/grub.cfg adjust the UUID to match your drive
+13. In linux partition on a target drive in /boot/grub/grub.cfg set the UUID root to match your drive
 14. Disable secure boot in your UEFI firmware settings, you should be able to boot from your drive
 
 Essentially you need to end up with two GPT partitions partitions like<br>
 /dev/sda1 (ESP, fat32) and /dev/sda2 (Linux, ext4). Script **install.sh** allows you<br>
-to pick up custom block device names (e.g. /dev/nvme0n1p instead of /dev/sda1)<br>
+to pick up custom block device names (e.g. /dev/nvme0n2p instead of /dev/sda2)<br>
 that would be used under initramfs init script to switch to the real root,<br>
 this is very important because if the target block device is not specified<br>
 properly switching from initramfs to actual root would fail.
@@ -48,7 +48,8 @@ after reboot because tcl packages reside under /tmp and get erased every reboot.
 So I've created a custom package installer with a persistent storage of packages.
 It's called **dipi**. It would get installed after running command **install_packages**.
 <br>
-Usage: **~$ dipi vim**<br>
+<br>
+    Usage: **~$ dipi vim**<br>
 <br>
 If you're unsure whether package exists you can run the following command:<br>
 **wget -O- http://tinycorelinux.net/14.x/x86_64/tcz | grep your_keyword**
