@@ -2,10 +2,17 @@
 
 # Suppress kernel messages
 dmesg -n 1
+
+# Display logo
 clear
+cat /etc/logo.txt
+sleep 1
 
 # Create directories
 mkdir -p home/msmd
+mkdir -p usr/local
+mkdir -p tmp
+mkdir -p mnt
 mkdir -p dev
 mkdir -p proc
 mkdir -p sys
@@ -17,10 +24,12 @@ mount -t sysfs none /sys
 mount -t tmpfs none /tmp
 
 # Set permissions
-chown root:root / /bin/sudo /etc/sudoers
+chown -R root:root /bin /sbin /lib /lib64 /etc /usr /mnt
+chown root:root /init /sbin/sudo
+chmod 4755 /sbin/sudo
+chown root:root /etc/sudoers
 chmod 0440 /etc/sudoers
-chmod +s /bin/sudo
-chown -R msmd:staff /home /tmp
+chown -R msmd:msmd /home /tmp
 chmod -R a+ /home /tmp
 
 # Start buxybox init as PID 1

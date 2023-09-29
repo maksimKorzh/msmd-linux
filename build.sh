@@ -32,7 +32,6 @@ GLIBC_DIR="$PWD/msmd/$(echo $GLIBC_VER | sed 's/\.tar\.gz//')"
 BUSYBOX_DIR="$PWD/msmd/$(echo $BUSYBOX_VER | sed 's/\.tar\.bz2//')"
 SYSROOT_DIR="$PWD/msmd/sysroot"
 MSMD_DIR="$PWD/msmd"
-ROOT_DIR="$PWD/root"
 ISO_DIR="$PWD/msmd/iso"
 
 # Install dependencies
@@ -61,7 +60,7 @@ build_kernel() {
   tar -xvf $KERNEL_VER
   cd $KERNEL_DIR
   make x86_64_defconfig -j $(nproc)
-  cp $ROOT_DIR/var/local/config/kernel.cfg .config
+  cp $PWD_DIR/config/kernel.cfg .config
   make bzImage -j $(nproc)
 }
 
@@ -110,7 +109,6 @@ build_rootfs() {
   rm -rf rootfs
   mkdir rootfs
   cp -r $PWD_DIR/root/* $MSMD_DIR/rootfs
-  sudo rm -rf $MSMD_DIR/rootfs/boot
   cp -r $BUSYBOX_DIR/BUSYBOX/* $MSMD_DIR/rootfs
   cp $SYSROOT_DIR/lib/libm.so.6 $MSMD_DIR/rootfs/lib/libm.so.6
   cp $SYSROOT_DIR/lib/libc.so.6 $MSMD_DIR/rootfs/lib/libc.so.6
@@ -137,7 +135,7 @@ build_iso() {
   cd $MSMD_DIR/rootfs
   find . | cpio -o -H newc | gzip > $ISO_DIR/boot/root.cpio.gz
   cp $KERNEL_DIR/arch/x86/boot/bzImage $ISO_DIR/boot/bzImage
-  cp $ROOT_DIR/var/local/config/grub.cfg $ISO_DIR/boot/grub/grub.cfg
+  cp $PWD_DIR/config/grub.cfg $ISO_DIR/boot/grub/grub.cfg
   grub-mkrescue -o $PWD_DIR/msmd-linux.iso $ISO_DIR
 }
 

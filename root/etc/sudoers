@@ -12,4 +12,4 @@
  
 # User privilege specification
 root    ALL=(ALL) ALL
-msmd	ALL=NOPASSWD: ALL 
+msmd	ALL=NOPASSWD: ALL
