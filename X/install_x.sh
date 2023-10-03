@@ -22,8 +22,8 @@ sudo mkdir -p /etc/skel
 sudo mkdir -p /etc/init.d
 sudo mkdir -p /etc/sysconfig
 sudo chmod -R +w /etc/sysconfig
-sudo echo "Xfbdev" | sudo tee /etc/sysconfig/Xserver
-sudo echo "jwm" | sudo tee /etc/sysconfig/desktop
+sudo echo "Xorg" | sudo tee /etc/sysconfig/Xserver
+sudo echo "icevm" | sudo tee /etc/sysconfig/desktop
 sudo echo "msmd" | sudo tee /etc/sysconfig/tcuser
 sudo echo "wbar" | sudo tee /etc/sysconfig/icons
 
