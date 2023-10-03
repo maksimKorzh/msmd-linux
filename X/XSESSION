@@ -1,0 +1,5 @@
+Xvesa -br -screen 1024x768x32 -shadow -2button -mouse /dev/input/mice,5 -nolisten tcp -I >/dev/null 2>&1 &
+export XPID=$!
+waitforX || echo failed || exit
+"$DESKTOP" 2>&1 &
+export WM_PID=$!

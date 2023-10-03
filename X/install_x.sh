@@ -23,7 +23,8 @@ sudo echo "jwm" | sudo tee /etc/sysconfig/desktop
 sudo echo "msmd" | sudo tee /etc/sysconfig/tcuser
 sudo echo "wbar" | sudo tee /etc/sysconfig/icons
 
-# Add missing scripts
+# Add missing scripts & files
 git clone https://github.com/tinycorelinux/Core-scripts
 sudo cp Core-scripts/etc/init.d/tc-functions /etc/init.d/tc-functions
 sudo cp Core-scripts/usr/bin/select /usr/bin/select
+sudo cp XSESSION /etc/skel/.xsession
