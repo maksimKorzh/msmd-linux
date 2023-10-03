@@ -1,0 +1,3 @@
+#!/bin/sh
+hsetroot -solid "#000000"
+[ $(which wbar.sh) ] && wbar.sh
