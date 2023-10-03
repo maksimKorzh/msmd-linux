@@ -29,10 +29,11 @@ sudo echo "msmd" | sudo tee /etc/sysconfig/tcuser
 sudo echo "wbar" | sudo tee /etc/sysconfig/icons
 
 # Add missing scripts & files
-#git clone https://github.com/tinycorelinux/Core-scripts
-#sudo cp Core-scripts/etc/init.d/tc-functions /etc/init.d/tc-functions
-#sudo cp Core-scripts/usr/bin/select /usr/bin/select
-sudo cp XSESSION /home/msmd/.xsession
+git clone https://github.com/tinycorelinux/Core-scripts
+sudo cp Core-scripts/etc/init.d/tc-functions /etc/init.d/tc-functions
+sudo cp Core-scripts/usr/bin/select /usr/bin/select
+sudo cp XSESSION /etc/skel/.xsession
+xsetup.sh
 cp WBARCONF /home/msmd/.wbarconf
 cp XDEFAULTS /home/msmd/.Xdefaults
 cp SETBACKGROUND /home/msmd/.setbackground
