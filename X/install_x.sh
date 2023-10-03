@@ -2,7 +2,7 @@
 
 ########################################
 #
-#   Install X server & Window Manager
+#     Install Xfbdev (Tiny X) & JWM
 #
 ########################################
 
@@ -23,18 +23,19 @@ sudo mkdir -p /etc/skel
 sudo mkdir -p /etc/init.d
 sudo mkdir -p /etc/sysconfig
 sudo chmod -R +w /etc/sysconfig
-sudo echo "Xorg" | sudo tee /etc/sysconfig/Xserver
-sudo echo "flwm" | sudo tee /etc/sysconfig/desktop
+sudo echo "Xfbdev" | sudo tee /etc/sysconfig/Xserver
+sudo echo "jwm" | sudo tee /etc/sysconfig/desktop
 sudo echo "msmd" | sudo tee /etc/sysconfig/tcuser
-sudo echo "wbar" | sudo tee /etc/sysconfig/icons
 
 # Add missing scripts & files
 git clone https://github.com/tinycorelinux/Core-scripts
 sudo cp Core-scripts/etc/init.d/tc-functions /etc/init.d/tc-functions
 sudo cp Core-scripts/usr/bin/select /usr/bin/select
 sudo cp XSESSION /etc/skel/.xsession
-xsetup.sh
-cp WBARCONF /home/msmd/.wbarconf
-cp XDEFAULTS /home/msmd/.Xdefaults
 cp SETBACKGROUND /home/msmd/.setbackground
-ln -s /usr/local/tce.icons /home/msmd/.wbar
+
+# Setup X environment
+xsetup.sh
+sed -i '1s/^/sudo /' /home/msmd/.xsession
+sudo mkdir -p /dev/pts
+sudo mount -t devpts devpts /dev/pts
