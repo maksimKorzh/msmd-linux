@@ -7,11 +7,15 @@
 ########################################
 
 # Install X packages
-dipi Xfbdev
-dipi jwm
+for PAC in $(cat packages.lst); do
+  dipi $PAC
+done
 
 # Fix permissions
 sudo sed -i 's/staff/msmd/g' /usr/local/bin/*
+
+# Symlink libs
+sudo ln -s /usr/local/lib/* /lib/
 
 # Provide Tiny Core related configurations
 sudo mkdir -p /etc/skel
