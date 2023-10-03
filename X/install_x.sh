@@ -11,15 +11,17 @@ dipi Xfbdev
 dipi jwm
 
 # Fix permissions
-sed -i 's/staff/msmd/g' /usr/local/bin/*
+sudo sed -i 's/staff/msmd/g' /usr/local/bin/*
 
 # Provide Tiny Core related configurations
+sudo mkdir -p /etc/skel
 sudo mkdir -p /etc/init.d
 sudo mkdir -p /etc/sysconfig
-echo "Xfbdev" > /etc/sysconfig/Xserver
-echo "jwm" > /etc/sysconfig/desktop
-echo "msmd" > /etc/sysconfig/tcuser
-echo "wbar" > /etc/sysconfig/icons
+sudo chmod -R +w /etc/sysconfig
+sudo echo "Xfbdev" | sudo tee /etc/sysconfig/Xserver
+sudo echo "jwm" | sudo tee /etc/sysconfig/desktop
+sudo echo "msmd" | sudo tee /etc/sysconfig/tcuser
+sudo echo "wbar" | sudo tee /etc/sysconfig/icons
 
 # Add missing scripts
 git clone https://github.com/tinycorelinux/Core-scripts
