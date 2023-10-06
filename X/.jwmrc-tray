@@ -2,11 +2,8 @@
 <JWM>
    <!-- Additional tray attributes: autohide, width, border, layer, layout -->
    <Tray x="0" y="748" height="20">
-     <!-- Additional TaskList attribute: maxwidth -->
-     <TaskList/>
-     <!-- Additional TrayButton attribute: label -->
      <TrayButton label="Desktop">showdesktop</TrayButton>
-     <TrayButton label="|">exec:</TrayButton>
+     <TaskList/>
      <TrayButton label="Editor">exec:editor</TrayButton>
      <TrayButton label="|">exec:</TrayButton>
      <TrayButton label="Aterm">exec:aterm</TrayButton>
