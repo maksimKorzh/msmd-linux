@@ -1,23 +1,14 @@
-[![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/maksimKorzh/msmd-linux/main/root/var/local/img/msmd-linux.png)](https://www.youtube.com/watch?v=EVTw4YqPdKA)
+[![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/maksimKorzh/msmd-linux/main/scr.png)](https://www.youtube.com/watch?v=EVTw4YqPdKA)
 
 # About
 Monkey See, Monkey Do LINUX is a didactic linux distribution serving
 educational purposes. It offers a customly configured Linux Kernel,
 Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
 
-# Download
-<a href="https://github.com/maksimKorzh/msmd-linux/releases/tag/0.1">**MSMD Linux ISO:**</a>
- - Kernel 5.10.76
- - BusyBox 1.36.1
- - Glibc 2.38
- - ATH10K(Atheros), RTW88 Wifi firmware
- - wpa supplicant
-
 # Networking
 Run **ethernet** command to connect to the ethernet network, this might
 be the case if you're running a demo ISO under QEMU. If you want to connect
 to WiFi run **wifi** after manually adjusting SSID and password under **/bin/wifi.sh**.
-
 
 # Package manager
 I've been playing around with tce-load from Tiny Core Linux and generally it's
