@@ -1,11 +1,59 @@
-Aterm*scrollBar: falsr
+Aterm*scrollBar: false
 Aterm*transparent: false
 Aterm*title: Aterm
 Aterm*font: 9x15
-Aterm*foreground: white
-Aterm*background: black
 Aterm*cursorColor: grey
-Aterm*color12: blue
+
+! black 1
+aterm*color0: #141212
+
+! red 1
+aterm*color1: #f2181b
+
+! green 1
+aterm*color10: #37c916
+
+! yellow 1
+aterm*color3: #dd8e18
+
+! blue 1
+aterm*color4: #3528e2
+
+! magenta 1
+aterm*color5: #c96cc3
+
+! cyan 1
+aterm*color6: #68ced6
+
+! white 1
+aterm*color7: #e8f3f4
+
+! black 2
+aterm*color8: #141212
+
+! red 2
+aterm*color9: #f2181b
+
+! green 2
+aterm*color2: #48af36
+
+! yellow 2
+aterm*color11: #eae723
+
+! blue 2
+aterm*color12: #6d64f4
+
+! magenta 2
+aterm*color13: #ba60b7
+
+! cyan 2
+aterm*color14: #68ced6
+
+! white 2
+aterm*color16: #e8f3f4
+
+Aterm*foreground: #ede6e6
+Aterm*background: #16120f
 Aterm*saveLines: 1000
 fltk*scheme: gtk+
 Xft.dpi: 96.0

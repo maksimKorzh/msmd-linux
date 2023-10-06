@@ -15,6 +15,7 @@
 cd /home/msmd
 wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest-ssl&amp;os=linux64&amp;lang=en-US"
 tar -xvf firefox.tar.bz2
+rm firefox.tar.bz2
 
 # Fix permissions
 #sudo sed -i 's/staff/msmd/g' /usr/local/bin/*
