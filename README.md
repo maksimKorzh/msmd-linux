@@ -9,7 +9,7 @@ Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
 # Networking
 Run **ethernet** command to connect to the ethernet network, this might
 be the case if you're running a demo ISO under QEMU. If you want to connect
-to WiFi run **wifi** after manually adjusting SSID and password under **/bin/wifi.sh**.
+to WiFi run **wifi** after manually adjusting SSID and password under **/sbin/wifi.sh**.
 
 # Package manager
 I've been playing around with tce-load from Tiny Core Linux and generally it's
