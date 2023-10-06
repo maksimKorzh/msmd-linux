@@ -18,6 +18,41 @@ Run **ethernet** command to connect to the ethernet network, this might
 be the case if you're running a demo ISO under QEMU. If you want to connect
 to WiFi run **wifi** after manually adjusting SSID and password under **/bin/wifi.sh**.
 
+
+# Package manager
+I've been playing around with tce-load from Tiny Core Linux and generally it's
+compatible if rootfs is adjusted accordingly, however it fails to save changes
+after reboot because tcl packages reside under /tmp and get erased every reboot.
+So I've created a custom package installer with a persistent storage of packages.
+It's called <a href="https://github.com/maksimKorzh/dipi">**dipi**</a>.
+It would get installed after running command **install_packages**.
+<br>
+<br>
+Usage: **~$ dipi vim**<br>
+<br>
+If you're unsure whether package exists you can run the following command:<br>
+**wget -O- http://tinycorelinux.net/14.x/x86_64/tcz | grep your_keyword**
+
+# Graphical desktop
+Currently Tiny X server called Xfbdev from Tiny Core Linux is used as a base
+for rendering graphics directly to /dev/fb0. This limits some applications
+relying on GPU 3D acceleration. Installing Xorg from Tiny Core repository
+can fix it but it's challenging since video divers needs to be installed.
+JWM (Joe's Window Manager) serves as a desktop environment along with fltk.
+Distro provides only basic GUI apps: Aterm (terminal emulator), Editor (Notepad clone with syntax highlighting)
+and Firefox (Web browser). Graphical desktop is not installed when you boot from the iso,
+but you can install it the following way:<br>
+<br>
+1. Download <a href="https://github.com/maksimKorzh/msmd-linux/releases/tag/0.1">**MSMD Linux ISO**</a>
+2. Run it using command: **qemu-system-x86_64 -vga qxl --cdrom msmd-linux.iso -enable-kvm -m 2G**
+3. When it boots to the shell execute following commands:<br>
+**~$ ethernet**<br>
+**~$ install_base**<br>
+**~$ install_xfbdev**<br>
+**~$ startx**<br>
+<br>
+You should see graphical desktop now.
+
 # How to install MSMD Linux on HDD (UEFI boot)
 1. Download msmd-linux repository
 2. Run **install.sh** command to generate installation ISO
@@ -40,20 +75,6 @@ to pick up custom block device names (e.g. /dev/nvme0n2p instead of /dev/sda2)<b
 that would be used under initramfs init script to switch to the real root,<br>
 this is very important because if the target block device is not specified<br>
 properly switching from initramfs to actual root would fail.
-
-# Package manager
-I've been playing around with tce-load from Tiny Core Linux and generally it's
-compatible if rootfs is adjusted accordingly, however it fails to save changes
-after reboot because tcl packages reside under /tmp and get erased every reboot.
-So I've created a custom package installer with a persistent storage of packages.
-It's called <a href="https://github.com/maksimKorzh/dipi">**dipi**</a>.
-It would get installed after running command **install_packages**.
-<br>
-<br>
-Usage: **~$ dipi vim**<br>
-<br>
-If you're unsure whether package exists you can run the following command:<br>
-**wget -O- http://tinycorelinux.net/14.x/x86_64/tcz | grep your_keyword**
 
 # Build from sources
 Use **build.sh** to create ISO from scratch<br>

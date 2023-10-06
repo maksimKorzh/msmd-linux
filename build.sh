@@ -145,11 +145,11 @@ build_iso() {
 }
 
 # Main
-get_deps
-build_init
-build_kernel
-build_glibc
-build_sysroot
-build_busybox
+#get_deps
+#build_init
+#build_kernel
+#build_glibc
+#build_sysroot
+#build_busybox
 build_rootfs
 build_iso
