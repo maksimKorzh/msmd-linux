@@ -19,4 +19,4 @@
 # 
 ####################################################################################
 
-qemu-system-x86_64 -vga qxl --cdrom msmd-linux.iso -enable-kvm -m 1G
+qemu-system-x86_64 -vga qxl --cdrom msmd-linux.iso -enable-kvm -m 2G

@@ -49,8 +49,9 @@ cd /home/msmd
 curl "https://download-installer.cdn.mozilla.net/pub/firefox/releases/118.0.1/linux-x86_64/en-US/firefox-118.0.1.tar.bz2" > firefox.tar.bz2
 tar -xvf firefox.tar.bz2
 rm firefox.tar.bz2
+sudo ln -s firefox/*.so /lib/
 
 # Install VICI text editor
 mkdir -p Desktop && cd Desktop
 git clone https://github.com/maksimKorzh/vici
-sudo cp /vici/src/vici /usr/bin/vici
+sudo cp Desktop/vici/src/vici /usr/bin/vici

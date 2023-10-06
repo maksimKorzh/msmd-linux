@@ -4,6 +4,7 @@ fltk-1.3
 jwm
 freetype
 gtk3
+dbus-glib
 glib2
 graphite
 harfbuzz
