@@ -1,12 +1,10 @@
-Aterm*scrollBar: true
+Aterm*scrollBar: falsr
 Aterm*transparent: false
-Aterm*title: Terminal
-Aterm*foreground: grey
+Aterm*title: Aterm
+Aterm*font: 9x15
+Aterm*foreground: white
 Aterm*background: black
-Aterm*font: terminus-18
 Aterm*cursorColor: grey
-Aterm*fading: 70
-Aterm*shading: 50
 Aterm*color12: blue
 Aterm*saveLines: 1000
 fltk*scheme: gtk+

@@ -11,6 +11,11 @@
 #  dipi $PAC
 #done
 
+# Install latest firefox
+cd /home/msmd
+wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest-ssl&amp;os=linux64&amp;lang=en-US"
+tar -xvf firefox.tar.bz2
+
 # Fix permissions
 #sudo sed -i 's/staff/msmd/g' /usr/local/bin/*
 
@@ -31,9 +36,12 @@ sudo echo "msmd" | sudo tee /etc/sysconfig/tcuser
 #git clone https://github.com/tinycorelinux/Core-scripts
 #sudo cp Core-scripts/etc/init.d/tc-functions /etc/init.d/tc-functions
 #sudo cp Core-scripts/usr/bin/select /usr/bin/select
-sudo cp XSESSION /etc/skel/.xsession
-cp SETBACKGROUND /home/msmd/.setbackground
+sudo cp .xsession /etc/skel/.xsession
+cp .setbackground /home/msmd/.setbackground
+mkdir -p /home/msmd/Images
+cp wallpaper.jpg /home/msmd/Images/wallpaper.jpg
 cp .jwm* /home/msmd/
+cp .Xdefaults /home/msmd/.Xdefaults
 
 # Setup X environment
 xsetup.sh
