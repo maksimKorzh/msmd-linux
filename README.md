@@ -26,12 +26,12 @@ If you're unsure whether package exists you can run the following command:<br>
 
 # Graphical desktop
 Currently Tiny X server called Xfbdev from Tiny Core Linux is used as a base
-for rendering graphics directly to /dev/fb0. This limits some applications
+for rendering graphics directly to **/dev/fb0**. This limits some applications
 relying on GPU 3D acceleration. Installing Xorg from Tiny Core repository
-can fix it but it's challenging since video divers needs to be installed.
-JWM (Joe's Window Manager) serves as a desktop environment along with fltk.
-Distro provides only basic GUI apps: Aterm (terminal emulator), Editor (Notepad clone with syntax highlighting)
-and Firefox (Web browser). Graphical desktop is not installed when you boot from the iso,
+can fix it but it's challenging since video divers needs to be installed from somewhere as well.
+JWM (Joe's Window Manager) serves as the desktop environment along with fltk widget toolkit.
+Distro provides only the basic GUI apps: terminal emulator **Aterm**, notepad clone with syntax highlighting called **Editor** 
+and web browser **Firefox**. Graphical desktop is not available when you boot from the ISO,
 but you can install it the following way:<br>
 <br>
 1. Download <a href="https://github.com/maksimKorzh/msmd-linux/releases/tag/0.1">**MSMD Linux ISO**</a>
