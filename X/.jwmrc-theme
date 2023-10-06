@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<JWM>
+   <!-- Visual Styles -->
+
+   <WindowStyle>
+         <Foreground>#aaaaaa</Foreground>
+         <Background>#808488:#303438</Background>
+         <Outline>black</Outline>
+      
+
+      <Font antialias="false">helvetica-r12</Font>
+      <Width>4</Width>
+      <Height>16</Height>
+
+      <Active>
+         <Foreground>white</Foreground>
+         <Background>#4f5f82</Background>
+         <Outline>black</Outline>
+      </Active>
+
+      
+
+   </WindowStyle>
+
+   
+
+   <!-- Additional TrayStyle attribute: insert -->
+   <TrayStyle>
+      <Font antialias="false">helvetica-r12</Font>
+      <Background>#c5c5c5</Background>
+      <Foreground>black</Foreground>
+   </TrayStyle>
+
+   <PagerStyle>
+      <Outline>black</Outline>
+      <Foreground>#c5c5c5</Foreground>
+      <Background>#808488</Background>
+         <Active>
+            <Background>#2e3a67</Background
+            <Foreground>#70849d</Foreground>
+         </Active>
+    </PagerStyle>
+
+   <MenuStyle>
+      <Font antialias="false">helvetica-r12</Font>
+      <Foreground>black</Foreground>
+      <Background>#c5c5c5</Background>
+         <Active>
+            <Background>#4f5f82</Background>
+            <Foreground>white</Foreground>
+         </Active>
+   </MenuStyle>
+
+   <PopupStyle enabled="false">
+      <Font antialias="false">helvetica-r12</Font>
+      <Outline>black</Outline>
+      <Foreground>white</Foreground>
+      <Background>#000080</Background>
+   </PopupStyle>
+</JWM>
