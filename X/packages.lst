@@ -3,6 +3,7 @@ bzip2-lib
 fltk-1.3
 jwm
 freetype
+gtk3
 glib2
 graphite
 harfbuzz
