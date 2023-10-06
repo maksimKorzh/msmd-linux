@@ -1,9 +1,10 @@
-[![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/maksimKorzh/msmd-linux/main/scr.png)](https://www.youtube.com/watch?v=EVTw4YqPdKA)
-
 # About
 Monkey See, Monkey Do LINUX is a didactic linux distribution serving
 educational purposes. It offers a customly configured Linux Kernel,
 Glibc, BusyBox, DHCP networking support and BIOS/UEFI boot.
+
+# Screenshots
+[![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/maksimKorzh/msmd-linux/main/scr.png)](https://www.youtube.com/watch?v=EVTw4YqPdKA)
 
 # Networking
 Run **ethernet** command to connect to the ethernet network, this might
