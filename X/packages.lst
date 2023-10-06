@@ -5,6 +5,7 @@ jwm
 freetype
 gtk3
 dbus-glib
+firefox-nightly
 glib2
 graphite
 harfbuzz

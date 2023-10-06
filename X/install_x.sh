@@ -54,4 +54,4 @@ sudo ln -s firefox/*.so /lib/
 # Install VICI text editor
 mkdir -p Desktop && cd Desktop
 git clone https://github.com/maksimKorzh/vici
-sudo cp Desktop/vici/src/vici /usr/bin/vici
+sudo cp vici/src/vici /usr/bin/vici
