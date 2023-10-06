@@ -7,9 +7,9 @@
 ########################################
 
 # Install X packages
-#for PAC in $(cat packages.lst); do
-#  dipi $PAC
-#done
+for PAC in $(cat packages.lst); do
+  dipi $PAC
+done
 
 # Install latest firefox
 cd /home/msmd
@@ -18,10 +18,10 @@ tar -xvf firefox.tar.bz2
 rm firefox.tar.bz2
 
 # Fix permissions
-#sudo sed -i 's/staff/msmd/g' /usr/local/bin/*
+sudo sed -i 's/staff/msmd/g' /usr/local/bin/*
 
 # Symlink libs
-#sudo ln -s /usr/local/lib/* /lib/
+sudo ln -s /usr/local/lib/* /lib/
 
 # Provide Tiny Core related configurations
 sudo mkdir -p /var/log
@@ -34,9 +34,9 @@ sudo echo "jwm" | sudo tee /etc/sysconfig/desktop
 sudo echo "msmd" | sudo tee /etc/sysconfig/tcuser
 
 # Add missing scripts & files
-#git clone https://github.com/tinycorelinux/Core-scripts
-#sudo cp Core-scripts/etc/init.d/tc-functions /etc/init.d/tc-functions
-#sudo cp Core-scripts/usr/bin/select /usr/bin/select
+git clone https://github.com/tinycorelinux/Core-scripts
+sudo cp Core-scripts/etc/init.d/tc-functions /etc/init.d/tc-functions
+sudo cp Core-scripts/usr/bin/select /usr/bin/select
 sudo cp .xsession /etc/skel/.xsession
 cp .setbackground /home/msmd/.setbackground
 mkdir -p /home/msmd/Images

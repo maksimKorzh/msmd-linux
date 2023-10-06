@@ -17,7 +17,7 @@ aterm*color10: #37c916
 aterm*color3: #dd8e18
 
 ! blue 1
-aterm*color4: #3528e2
+aterm*color4: #3842d1
 
 ! magenta 1
 aterm*color5: #c96cc3
@@ -44,7 +44,7 @@ aterm*color11: #eae723
 aterm*color12: #6d64f4
 
 ! magenta 2
-aterm*color13: #ba60b7
+aterm*color13: #a863a7
 
 ! cyan 2
 aterm*color14: #68ced6
