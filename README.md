@@ -17,7 +17,7 @@ compatible if rootfs is adjusted accordingly, however it fails to save changes
 after reboot because tcl packages reside under /tmp and get erased every reboot.
 So I've created a custom package installer with a persistent storage of packages.
 It's called <a href="https://github.com/maksimKorzh/dipi">**dipi**</a>.
-It would get installed after running command **install_packages**.
+It would get installed after running command **install_base**.
 <br>
 <br>
 Usage: **~$ dipi vim**<br>
@@ -61,7 +61,7 @@ but now **udev** is a part of a base, so Xorg should work without any additional
 
 # How to install MSMD Linux on HDD (UEFI boot)
 1. Download msmd-linux repository
-2. Run **install.sh** command to generate installation ISO
+2. Run **make_install_iso.sh** command to generate installation ISO
 3. Burn installation ISO to USB flash drive using **burn-iso.sh**
 4. Boot from your USB flash drive
 5. Connect to network by running **ethernet** or **wifi** (don't forget to change SSID/PASS)
