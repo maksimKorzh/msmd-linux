@@ -28,10 +28,9 @@ If you're unsure whether package exists you can run the following command:<br>
 # Graphical desktop
 Currently Tiny X server called Xfbdev from Tiny Core Linux is used as a base
 for rendering graphics directly to **/dev/fb0**. This limits some applications
-relying on GPU 3D acceleration. Installing Xorg from Tiny Core repository
-can fix it but it's challenging since video divers needs to be installed from somewhere as well.
-JWM (Joe's Window Manager) serves as the desktop environment along with fltk widget toolkit.
-Distro provides only the basic GUI apps: terminal emulator **Aterm**, notepad clone with syntax highlighting called **Editor** 
+relying on GPU 3D acceleration. JWM (Joe's Window Manager) serves as the desktop 
+environment along with fltk widget toolkit. Distro provides only the basic GUI apps: 
+terminal emulator **Aterm**, notepad clone with syntax highlighting called **Editor** 
 and web browser **Firefox**. Graphical desktop is not available when you boot from the ISO,
 but you can install it the following way:<br>
 <br>
@@ -44,6 +43,21 @@ but you can install it the following way:<br>
 **~$ startx**<br>
 <br>
 You should see graphical desktop now.
+
+# Xorg
+Many apps do require Xorg to run, so you can try luck with
+installing Xorg by typing in following commands after installing
+Xfbdev and JWM:<br>
+<br>
+**dipi Xorg-7.7**<br>
+**dipi Xorg-7.7-3d**<br>
+**dipi xf86-video-intel** # or drivers specific to your hardware<br>
+**dipi intel-media** # same<br>
+<br>
+Xorg should start next time you run **startx**.
+Previously it didn't work because **libinput** Xorg driver
+couldn't start **udev** (Initially I've been populating **/dev** via mounting devtmpfs)
+but now **udev** is a part of a base, so Xorg should work without any additional configs.
 
 # How to install MSMD Linux on HDD (UEFI boot)
 1. Download msmd-linux repository
