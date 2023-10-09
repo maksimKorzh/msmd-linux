@@ -49,12 +49,14 @@ Many apps do require Xorg to run, so you can try luck with
 installing Xorg by typing in following commands after installing
 Xfbdev and JWM:<br>
 <br>
+**sudo mkdir -p /var/log**<br>
 **dipi Xorg-7.7**<br>
 **dipi Xorg-7.7-3d**<br>
 **dipi xf86-video-intel** # or drivers specific to your hardware<br>
 **dipi intel-media** # same<br>
 <br>
-Xorg should start next time you run **startx**.
+Xorg should start next time you run **startx**. If X server doesn't start or not responding
+check out the logs at **/var/log/Xorg.0.log** to troubleshoot.
 Previously it didn't work because **libinput** Xorg driver
 couldn't start **udev** (Initially I've been populating **/dev** via mounting devtmpfs)
 but now **udev** is a part of a base, so Xorg should work without any additional configs.
