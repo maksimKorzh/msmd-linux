@@ -57,7 +57,7 @@ Run **install_xfbdev** script to get basic desktop environment with Tiny X serve
 Alternatively run **install_xorg** to get Xorg server and GPU support, you might need to adjust packages to install
 under */home/msmd/.X/packages-xorg.lst*. To get sound run **install_audio** script, make sure to update */etc/profile*,
 you can simply uncomment last lines and adjust values if needed.<br>
-You should see graphical desktop and here the sound in Firefox after rebbot.
+You should see graphical desktop and here the sound in Firefox after reboot.
 
 # Build from sources
 Use **build.sh** to create ISO from scratch<br>
